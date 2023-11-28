@@ -9,5 +9,7 @@ services:
       - ./pyproject.toml:/app/pyproject.toml
       - ./poetry.lock:/app/poetry.lock
       - ./src:/app/src/
+      - ./scripts:/app/scripts/
+      - ./tests:/app/tests/
     tty: true
     command: ["sleep", "infinity"]

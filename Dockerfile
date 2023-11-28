@@ -20,3 +20,5 @@ RUN poetry config virtualenvs.create false && \
     poetry install;
 
 COPY src/ /app/src/
+COPY scripts/ app/scripts
+COPY tests/ app/tests
