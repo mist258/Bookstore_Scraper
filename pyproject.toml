@@ -8,16 +8,12 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 scrapy = "^2.11.0"
-pytest = "^7.4.3"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.7.1"
-pylint = "^3.0.2"
 ruff = "^0.1.6"
 black = "^23.11.0"
-isort = "^5.12.0"
-flake8 = "^6.1.0"
-autoflake = "^2.2.1"
+pytest = "^7.4.3"
 
 
 [tool.ruff]
@@ -32,45 +28,11 @@ ignore-init-module-imports = true
 [tool.ruff.isort]
 lines-after-imports = 2
 
-
 [tool.ruff.format]
 quote-style = "double"
-indent-style = "tab"
+indent-style = "space"
 skip-magic-trailing-comma = false
 line-ending = "auto"
-
-[tool.pylint.basic]
-bad-names = ["foo", "bar", "baz", "toto", "tutu", "tata"]
-good-names = ["i", "j", "k", "ex", "Run", "_"]
-no-docstring-rgx = "^_"
-property-classes = ["abc.abstractproperty"]
-
-[tool.pylint.classes]
-defining-attr-methods = ["__init__", "__new__", "setUp"]
-exclude-protected = ["_asdict", "_fields", "_replace", "_source", "_make"]
-valid-classmethod-first-arg = ["cls", "class_"]
-valid-metaclass-classmethod-first-arg = ["mcs"]
-
-[tool.pylint.miscellaneous]
-notes = ["FIXME"]
-notes-rgx = "(TODO)(?!\\s*\\(CA-[0-9]+\\):)\\b.*"
-
-[tool.pylint.refactoring]
-never-returning-functions = ["sys.exit", "argparse.parse_error"]
-
-[tool.pylint.similarities]
-min-similarity-lines = 6
-ignore-comments = true
-ignore-docstrings = true
-ignore-imports = false
-
-[tool.pylint.typecheck]
-ignored-classes = ["optparse.Values", "thread._local", "_thread._local", "argparse.Namespace", "twisted.internet.reactor"]
-
-[tool.pylint.variables]
-callbacks = ["cb_", "_cb"]
-ignored-argument-names = "_.*|^ignored_|^unused_"
-redefining-builtins-modules = ["six.moves", "past.builtins", "future.builtins", "builtins", "io"]
 
 [build-system]
 requires = ["poetry-core"]
