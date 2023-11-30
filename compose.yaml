@@ -5,11 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - PYTHON_IMAGE_VERSION=${PYTHON_IMAGE_VERSION}
     volumes:
-      - ./pyproject.toml:/app/pyproject.toml
-      - ./poetry.lock:/app/poetry.lock
-      - ./src:/app/src/
-      - ./scripts:/app/scripts/
-      - ./tests:/app/tests/
+      - .:/app/
     tty: true
     command: ["sleep", "infinity"]

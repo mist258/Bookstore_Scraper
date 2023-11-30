@@ -1,4 +1,6 @@
-FROM python:3.11.6-slim-bullseye
+ARG PYTHON_IMAGE_VERSION
+
+FROM python:${PYTHON_IMAGE_VERSION}
 
 # last poetry version: https://github.com/python-poetry/poetry
 ARG POETRY_VERSION=1.7.1
