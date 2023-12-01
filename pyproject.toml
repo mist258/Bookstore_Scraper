@@ -18,24 +18,11 @@ pytest = "^7.4.3"
 
 [tool.ruff]
 src = ["src"]
-ignore = [
-    "C901",  # too complex
-    "E501",  # line too long, handled by black
-    "E741",  # do not use variables named 'I', 'O' or 'l'
-]
-select = [
-    "C",  # flake8-comprehensions
-    "E",  # pycodestyle errors
-    "W",  # pycodestyle warnings
-    "F",  # pyflakes
-    "I",  # isort
-]
+select = ["C", "E", "W", "F", "I"]
 line-length = 120
 
 [tool.ruff.lint]
-select = [
-    "D",  #  PEP 257
-]
+select = ["D"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
@@ -49,8 +36,8 @@ lines-after-imports = 2
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
-skip-magic-trailing-comma = false
-line-ending = "auto"
+skip-magic-trailing-comma = true
+line-ending = "lf"
 
 [build-system]
 requires = ["poetry-core"]
