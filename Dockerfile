@@ -33,6 +33,9 @@ ENV PYTHONUNBUFFERED=1 \
 RUN apt-get update -yq \
     && apt-get install -yq --no-install-recommends \
     curl \
+    gcc \
+    default-libmysqlclient-dev \
+    pkg-config \
     ; \
     # installing poetry: https://github.com/python-poetry/poetry
     curl -sSL https://install.python-poetry.org | python - \

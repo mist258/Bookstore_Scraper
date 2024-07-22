@@ -8,6 +8,13 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.11"
 scrapy = "^2.11.0"
+furl = "^2.1.3"
+alembic = "^1.13.2"
+sqlalchemy = "^2.0.31"
+pydantic = "^2.8.2"
+pendulum = "^3.0.0"
+mysqlclient = "^2.2.4"
+pika = "^1.3.2"
 
 [tool.poetry.group.dev.dependencies]
 mypy = "^1.10.1"
@@ -19,6 +26,7 @@ pytest = "^8.2.2"
 [tool.ruff]
 line-length = 120
 src = ["src"]
+exclude = ['rmq']
 
 [tool.ruff.lint]
 select = ["F", "I", "D", "PL", "E", "W", "UP", "T20", "C4", "C90", "PTH", "RET", "SIM"]
@@ -52,9 +60,13 @@ testpaths = ["tests"]
 [tool.mypy]
 mypy_path = "src"
 strict = true
+exclude = ["rmq"]
 
 [[tool.mypy.overrides]]
 module = [
     "scrapy.*",
+    "furl.*",
+    "pika.*",
+    "MySQLdb.*",
 ]
 ignore_missing_imports = true
