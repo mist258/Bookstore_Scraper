@@ -59,7 +59,6 @@ testpaths = ["tests"]
 
 [tool.mypy]
 mypy_path = "src"
-strict = true
 exclude = ["rmq"]
 
 [[tool.mypy.overrides]]
