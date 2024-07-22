@@ -11,11 +11,15 @@ commonly used. You can find more settings consulting the documentation:
 
 import os
 
+from dotenv import load_dotenv
 from scrapy.utils.reactor import install_reactor
 
 from middlewares import BrokenProxyRotatorMiddleware, HttpProxyMiddleware
 from rmq.utils import get_import_full_name
 from utils.funcs.util import strtobool
+
+load_dotenv(verbose=False, override=True)
+
 
 BOT_NAME = "scrapy_boilerplate_v2"
 
