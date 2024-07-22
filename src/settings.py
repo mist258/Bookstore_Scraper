@@ -9,10 +9,13 @@ commonly used. You can find more settings consulting the documentation:
 
 """
 
+import os
+
 from scrapy.utils.reactor import install_reactor
 
 from middlewares import BrokenProxyRotatorMiddleware, HttpProxyMiddleware
 from rmq.utils import get_import_full_name
+from utils.funcs.util import strtobool
 
 BOT_NAME = "scrapy_boilerplate_v2"
 
@@ -99,6 +102,28 @@ DOWNLOADER_MIDDLEWARES = {
 # HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+
+# database (MySQL) settings
+DB_HOST = os.getenv("DB_HOST")
+DB_PORT = os.getenv("DB_PORT")
+DB_USERNAME = os.getenv("DB_USERNAME")
+DB_PASSWORD = os.getenv("DB_PASSWORD")
+DB_DATABASE = os.getenv("DB_DATABASE")
+
+# RabbitMQ settings
+RABBITMQ_HOST = os.getenv("RABBITMQ_HOST")
+RABBITMQ_PORT = os.getenv("RABBITMQ_PORT")
+RABBITMQ_USERNAME = os.getenv("RABBITMQ_USERNAME")
+RABBITMQ_PASSWORD = os.getenv("RABBITMQ_PASSWORD")
+RABBITMQ_VIRTUAL_HOST = os.getenv("RABBITMQ_VIRTUAL_HOST")
+
+# proxy settings
+PROXY_ENABLED = strtobool(os.getenv("PROXY_ENABLED", "False"))
+PROXY_ADDRESS = os.getenv("PROXY_ADDRESS")
+PROXY_USERNAME = os.getenv("PROXY_USERNAME")
+PROXY_PASSWORD = os.getenv("PROXY_PASSWORD")
+
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 install_reactor(TWISTED_REACTOR)
