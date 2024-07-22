@@ -9,6 +9,11 @@ commonly used. You can find more settings consulting the documentation:
 
 """
 
+from scrapy.utils.reactor import install_reactor
+
+from middlewares import BrokenProxyRotatorMiddleware, HttpProxyMiddleware
+from rmq.utils import get_import_full_name
+
 BOT_NAME = "scrapy_boilerplate_v2"
 
 SPIDER_MODULES = ["spiders"]
@@ -53,9 +58,12 @@ ROBOTSTXT_OBEY = False
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
-# DOWNLOADER_MIDDLEWARES = {
-#    "middlewares.DataCollectionDownloaderMiddleware": 543,
-# }
+DOWNLOADER_MIDDLEWARES = {
+    # "middlewares.DataCollectionDownloaderMiddleware": 543,
+    get_import_full_name(HttpProxyMiddleware): 749,
+    # "scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware": 750,
+    get_import_full_name(BrokenProxyRotatorMiddleware): 910,
+}
 
 # Enable or disable extensions
 # See https://docs.scrapy.org/en/latest/topics/extensions.html
@@ -93,4 +101,5 @@ ROBOTSTXT_OBEY = False
 # Set settings whose default value is deprecated to a future-proof value
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+install_reactor(TWISTED_REACTOR)
 FEED_EXPORT_ENCODING = "utf-8"
