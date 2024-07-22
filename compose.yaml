@@ -1,13 +1,19 @@
 version: "3.9"
 
 services:
-  scrapy-boilerplate-v2:
+  scrapy:
     build:
       context: .
       dockerfile: Dockerfile
+      target: development
       args:
         - PYTHON_IMAGE_VERSION=${PYTHON_IMAGE_VERSION}
     volumes:
-      - .:/app/
+      - ./scripts:/app/scripts
+      - ./tests:/app/tests
+      - ./src:/app/src
+      - ./pyproject.toml:/app/pyproject.toml
+      - ./poetry.lock:/app/poetry.lock
+      - .env:/app/.env
     tty: true
     command: ["sleep", "infinity"]

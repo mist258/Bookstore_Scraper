@@ -10,42 +10,51 @@ python = "^3.11"
 scrapy = "^2.11.0"
 
 [tool.poetry.group.dev.dependencies]
-mypy = "^1.7.1"
-ruff = "^0.1.6"
-black = "^23.11.0"
-pytest = "^7.4.3"
+mypy = "^1.10.1"
+ruff = "^0.5.1"
+black = "^24.4.2"
+pytest = "^8.2.2"
 
 
 [tool.ruff]
-src = ["src"]
-select = ["C", "E", "W", "F", "I"]
 line-length = 120
+src = ["src"]
 
 [tool.ruff.lint]
-select = ["D"]
+select = ["F", "I", "D", "PL", "E", "W", "UP", "T20", "C4", "C90", "PTH", "RET", "SIM"]
+ignore = ["D104", "D107", "D205", "PLR2004", "SIM105"]
 
 [tool.ruff.lint.pydocstyle]
 convention = "google"
 
-[tool.ruff.per-file-ignores]
-"__init__.py" = ["F401", "D104"]
+[tool.ruff.lint.pylint]
+max-args = 12
 
-[tool.ruff.isort]
-lines-after-imports = 2
+[tool.ruff.lint.isort]
+split-on-trailing-comma = false
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["F401", "D104"]
+"tests/*" = ["D"]
 
 [tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
-skip-magic-trailing-comma = true
-line-ending = "lf"
+docstring-code-format = true
+skip-magic-trailing-comma = false
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.pytest.ini_options]
-minversion = "7.0"
+minversion = "8.0"
 testpaths = ["tests"]
 
 [tool.mypy]
+mypy_path = "src"
 strict = true
+
+[[tool.mypy.overrides]]
+module = [
+    "scrapy.*",
+]
+ignore_missing_imports = true
