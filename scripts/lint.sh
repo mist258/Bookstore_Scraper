@@ -4,8 +4,7 @@ set -e
 set -x
 
 echo "mypy check:"
-cd src && mypy --namespace-packages --explicit-package-bases .
-cd ..
+(cd src && mypy --namespace-packages --explicit-package-bases .)
 echo "ruff linter check:"
 ruff check src tests
 echo "ruff formatter check:"
