@@ -1,6 +1,6 @@
-from rmq.extensions import RPCTaskConsumer
-from rmq.spiders import TaskBaseSpider
-from rmq.utils import TaskObserver
+from src.rmq.extensions import RPCTaskConsumer
+from src.rmq.spiders import TaskBaseSpider
+from src.rmq.utils import TaskObserver
 
 
 class TaskToSingleResultSpider(TaskBaseSpider):

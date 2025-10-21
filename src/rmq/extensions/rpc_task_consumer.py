@@ -17,9 +17,9 @@ from twisted.internet.error import DNSLookupError, TCPTimedOutError, TimeoutErro
 from twisted.python.failure import Failure
 
 # import rmq module specific
-from rmq.connections import PikaSelectConnection
-from rmq.signals import callback_completed, errback_completed, item_scheduled
-from rmq.utils import (
+from src.rmq.connections import PikaSelectConnection
+from src.rmq.signals import callback_completed, errback_completed, item_scheduled
+from src.rmq.utils import (
     RMQConstants,
     RMQDefaultOptions,
     Task,
@@ -27,7 +27,7 @@ from rmq.utils import (
     TaskStatusCodes,
     extract_delivery_tag_from_failure,
 )
-from rmq.utils.decorators import call_once, rmq_callback, rmq_errback
+from src.rmq.utils.decorators import call_once, rmq_callback, rmq_errback
 
 logger = logging.getLogger(__name__)
 

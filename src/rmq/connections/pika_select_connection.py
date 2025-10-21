@@ -7,7 +7,7 @@ import pika
 from pika.exceptions import ChannelWrongStateError, ConnectionWrongStateError
 from twisted.internet import reactor
 
-from rmq.utils.decorators import log_current_thread
+from src.rmq.utils.decorators import log_current_thread
 
 logger = logging.getLogger(__name__)
 

@@ -15,9 +15,9 @@ from sqlalchemy.sql.base import Executable as SQLAlchemyExecutable
 from twisted.enterprise import adbapi
 from twisted.internet import reactor
 
-from rmq.connections import PikaSelectConnection
-from rmq.utils import RMQConstants, RMQDefaultOptions
-from rmq.utils.decorators import call_once
+from src.rmq.connections import PikaSelectConnection
+from src.rmq.utils import RMQConstants, RMQDefaultOptions
+from src.rmq.utils.decorators import call_once
 
 
 class Consumer(ScrapyCommand):

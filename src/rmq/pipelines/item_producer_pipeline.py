@@ -8,9 +8,9 @@ from scrapy.crawler import Crawler
 from scrapy.exceptions import CloseSpider, DontCloseSpider
 from twisted.internet import reactor
 
-from rmq.connections import PikaSelectConnection
-from rmq.items import RMQItem
-from rmq.utils import RMQConstants, RMQDefaultOptions
+from src.rmq.connections import PikaSelectConnection
+from src.rmq.items import RMQItem
+from src.rmq.utils import RMQConstants, RMQDefaultOptions
 
 logger = logging.getLogger(__name__)
 

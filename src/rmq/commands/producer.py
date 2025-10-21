@@ -16,8 +16,8 @@ from sqlalchemy.sql.base import Executable as SQLAlchemyExecutable
 from twisted.enterprise import adbapi
 from twisted.internet import defer, reactor
 
-from rmq.connections import PikaSelectConnection
-from rmq.utils import RMQConstants, RMQDefaultOptions, TaskStatusCodes
+from src.rmq.connections import PikaSelectConnection
+from src.rmq.utils import RMQConstants, RMQDefaultOptions, TaskStatusCodes
 
 
 class Producer(ScrapyCommand):

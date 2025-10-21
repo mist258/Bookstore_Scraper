@@ -4,8 +4,8 @@ import inspect
 import scrapy
 from twisted.python.failure import Failure
 
-from rmq.signals import errback_completed, item_scheduled
-from rmq.utils import RMQConstants
+from src.rmq.signals import errback_completed, item_scheduled
+from src.rmq.utils import RMQConstants
 
 
 def rmq_errback(errback_method):

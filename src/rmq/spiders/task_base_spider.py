@@ -1,7 +1,7 @@
-from rmq.extensions import RPCTaskConsumer
-from rmq.middlewares import DeliveryTagSpiderMiddleware, TaskTossSpiderMiddleware
-from rmq.spiders import HttpbinSpider
-from rmq.utils import get_import_full_name
+from src.rmq.extensions import RPCTaskConsumer
+from src.rmq.middlewares import DeliveryTagSpiderMiddleware, TaskTossSpiderMiddleware
+from src.rmq.spiders import HttpbinSpider
+from src.rmq.utils import get_import_full_name
 
 
 class TaskBaseSpider(HttpbinSpider):

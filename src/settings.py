@@ -127,6 +127,7 @@ PROXY_ENABLED = strtobool(os.getenv("PROXY_ENABLED", "False"))
 PROXY_ADDRESS = os.getenv("PROXY_ADDRESS")
 PROXY_USERNAME = os.getenv("PROXY_USERNAME")
 PROXY_PASSWORD = os.getenv("PROXY_PASSWORD")
+PROXY_PORT = os.getenv("PROXY_PORT")
 
 REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"

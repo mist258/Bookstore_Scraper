@@ -1,5 +1,5 @@
-from rmq.items import RMQItem
-from rmq.utils import RMQConstants
+from src.rmq.items import RMQItem
+from src.rmq.utils import RMQConstants
 
 
 class DeliveryTagSpiderMiddleware:

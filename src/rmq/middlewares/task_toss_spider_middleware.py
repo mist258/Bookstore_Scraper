@@ -1,6 +1,6 @@
 from scrapy import Request
 
-from rmq.utils import RMQConstants
+from src.rmq.utils import RMQConstants
 
 
 class TaskTossSpiderMiddleware:

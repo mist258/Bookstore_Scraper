@@ -1,6 +1,6 @@
 import json
 
-from rmq.exceptions import ConsumedDataCorrupted
+from src.rmq.exceptions import ConsumedDataCorrupted
 
 
 class Task:
