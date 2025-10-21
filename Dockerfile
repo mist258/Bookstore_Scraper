@@ -79,7 +79,8 @@ ENV PATH="$VIRTUALENV/bin:$PATH"
 
 RUN apt-get update -yq \
     && apt-get install -yq --no-install-recommends \
-        default-libmysqlclient21 \
+        libmariadb3 \
+        mariadb-common \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
