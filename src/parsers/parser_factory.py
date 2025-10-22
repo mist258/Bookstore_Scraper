@@ -9,8 +9,8 @@ from typing import Any, Generic, TypeVar
 
 from scrapy.http import Response
 
-from .exceptions import MultipleParsersFoundError, ParserNotFoundError
-from .response_parser import ResponseParser
+from src.parsers.exceptions import MultipleParsersFoundError, ParserNotFoundError
+from src.parsers.response_parser import ResponseParser
 
 AnyResponseParser = TypeVar("AnyResponseParser", bound=ResponseParser)
 
