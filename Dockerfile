@@ -88,3 +88,4 @@ COPY --from=builder $VIRTUALENV $VIRTUALENV
 
 WORKDIR /app
 COPY src/ /app/src/
+COPY scripts/ /app/scripts/
