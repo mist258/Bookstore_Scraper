@@ -70,6 +70,8 @@ COPY scripts/ /app/scripts
 COPY tests/ /app/tests
 COPY src/ /app/src
 
+RUN find /app/src -type d -exec touch {}/__init__.py \;
+
 # `production` image used for runtime (without poetry, only virtualenv)
 FROM python:${PYTHON_IMAGE_VERSION} AS production
 
