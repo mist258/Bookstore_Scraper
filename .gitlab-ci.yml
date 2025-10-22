@@ -101,6 +101,7 @@ lint-test-job:
       artifacts: true
   image: docker:stable
   script:
+    - chmod +x scripts/lint.sh
     - docker run --rm -v $CI_PROJECT_DIR:/app -w /app $CONTAINER_DEVELOPMENT_IMAGE ./scripts/lint.sh
   rules:
     - !reference [ .default_rules, rules ]
