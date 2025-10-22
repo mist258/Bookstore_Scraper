@@ -2,9 +2,10 @@
 
 set -e
 set -x
+export PYTHONPATH="$CI_PROJECT_DIR/src"
 
 echo "mypy check:"
-(cd src && mypy --namespace-packages --explicit-package-bases .)
+mypy --namespace-packages --explicit-package-bases src
 echo "ruff linter check:"
 ruff check src tests
 echo "ruff formatter check:"
