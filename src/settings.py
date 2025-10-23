@@ -19,7 +19,7 @@ from rmq.utils import get_import_full_name
 from utils.funcs.util import strtobool
 
 load_dotenv(verbose=False, override=True)
-
+FEED_EXPORT_ENCODING="utf-8"
 
 BOT_NAME = "scrapy_boilerplate_v2"
 

@@ -41,11 +41,10 @@ RUN apt-get update -yq \
         pkg-config \
         libssl-dev \
         libffi-dev \
-        make \
     # installing poetry: https://github.com/python-poetry/poetry \
     && curl -sSL https://install.python-poetry.org | python - \
     # cleaning cache \
-    #&& apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
+    && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
@@ -77,13 +76,6 @@ FROM python:${PYTHON_IMAGE_VERSION} AS production
 ARG VIRTUALENV
 
 ENV PATH="$VIRTUALENV/bin:$PATH"
-
-RUN apt-get update -yq \
-    && apt-get install -yq --no-install-recommends \
-        libmariadb3 \
-        mariadb-common \
-    && apt-get clean -y \
-    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=builder $VIRTUALENV $VIRTUALENV
 
