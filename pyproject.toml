@@ -58,9 +58,7 @@ build-backend = "poetry.core.masonry.api"
 minversion = "8.0"
 testpaths = ["tests"]
 
-[tool.mypy]
-mypy_path = "src"
-exclude = ["rmq"]
+
 
 [[tool.mypy.overrides]]
 module = [

@@ -19,7 +19,6 @@ from rmq.utils import get_import_full_name
 from utils.funcs.util import strtobool
 
 load_dotenv(verbose=False, override=True)
-FEED_EXPORT_ENCODING="utf-8"
 
 BOT_NAME = "scrapy_boilerplate_v2"
 
@@ -133,3 +132,6 @@ REQUEST_FINGERPRINTER_IMPLEMENTATION = "2.7"
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 install_reactor(TWISTED_REACTOR)
 FEED_EXPORT_ENCODING = "utf-8"
+
+#proxy for all requests
+HTTP_PROXY = f'http://{PROXY_USERNAME}:{PROXY_PASSWORD}@{PROXY_ADDRESS}:{PROXY_PORT}'
