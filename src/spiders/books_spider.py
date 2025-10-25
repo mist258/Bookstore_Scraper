@@ -51,7 +51,9 @@ class BooksSpider(CrawlSpider):
         item["publishing_house"] =response.xpath(
             '//span[@class="product-fields-title" and contains(text(), "Publisher")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
         ).get()
-        #item["series"] = ...
+        item["series"] = response.xpath(
+            '//span[@class="product-fields-title" and contains(text(), "Series")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
+        ).get()
         item["isbn"] = response.xpath(
             '//span[@class="product-fields-title" and contains(text(), "ISBN")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
         ).get()
