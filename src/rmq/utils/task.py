@@ -1,6 +1,6 @@
 import json
 
-from ..exceptions import ConsumedDataCorrupted
+from rmq.exceptions import ConsumedDataCorrupted
 
 
 class Task:
@@ -90,6 +90,12 @@ class Task:
         if ignore_zero is True and self.scheduled_requests == 0:
             return False
         return self.scheduled_requests == (self.success_responses + self.failed_responses)
+
+    def get_reply_payload(self):
+        return {
+            "status": self.status,
+            "exception": self.exception,
+        }
 
     def __repr__(self):
         return json.dumps(

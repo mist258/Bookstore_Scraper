@@ -3,8 +3,8 @@ import inspect
 
 import scrapy
 
-from src.rmq.signals import callback_completed, item_scheduled
-from src.rmq.utils import RMQConstants
+from rmq.signals import callback_completed, item_scheduled
+from rmq.utils import RMQConstants
 
 
 def rmq_callback(callback_method):

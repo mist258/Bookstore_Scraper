@@ -16,7 +16,7 @@ from scrapy.utils.reactor import install_reactor
 
 from middlewares import BrokenProxyRotatorMiddleware, HttpProxyMiddleware
 from rmq.utils import get_import_full_name
-from utils.funcs.util import strtobool
+from utils.util import strtobool
 
 load_dotenv(verbose=False, override=True)
 
@@ -79,9 +79,16 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    "pipelines.DataCollectionPipeline": 300,
-# }
+IMAGES_STORE = "storage"
+IMAGES_URLS_FIELD = "image_urls"
+IMAGES_RESULT_FIELD = "images"
+
+ITEM_PIPELINES = {
+    "scrapy.pipelines.images.ImagesPipeline": 1,
+    "pipelines.scraper_pipeline.BookPipeline": 300,
+}
+
+
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
@@ -105,7 +112,7 @@ DOWNLOADER_MIDDLEWARES = {
 # HTTPCACHE_STORAGE = "scrapy.extensions.httpcache.FilesystemCacheStorage"
 
 # Set settings whose default value is deprecated to a future-proof value
-LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "WARNING")
 
 # database (MySQL) settings
 DB_HOST = os.getenv("DB_HOST")
@@ -133,5 +140,9 @@ TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
 install_reactor(TWISTED_REACTOR)
 FEED_EXPORT_ENCODING = "utf-8"
 
-#proxy for all requests
+#proxy
 HTTP_PROXY = f'http://{PROXY_USERNAME}:{PROXY_PASSWORD}@{PROXY_ADDRESS}:{PROXY_PORT}'
+
+PROXY = os.getenv("PROXY", "")
+PROXY_AUTH = os.getenv("PROXY_AUTH", "")
+

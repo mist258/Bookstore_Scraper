@@ -1,6 +1,7 @@
 from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import CrawlSpider, Rule
 from datetime import datetime
+from items_book.books_items import BookItem
 
 
 class BooksSpider(CrawlSpider):
@@ -32,7 +33,7 @@ class BooksSpider(CrawlSpider):
     )
 
     def parse_item(self, response):
-        item = {}
+        item = BookItem()
 
         item["title"] = response.xpath('//div[@class="spacer-buy-area"]/h1/text()').get()
         item["authors"] = response.xpath(
@@ -63,7 +64,22 @@ class BooksSpider(CrawlSpider):
         item["number_of_pages"] =  response.xpath(
             '//span[@class="product-fields-title" and contains(text(), "Number of Pages")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
         ).get()
-        item["image_link"] = response.xpath('//div[@class="imagebox"]/img[@itemprop="image"]/@src').get()
+        # item["image_link"] = response.xpath(
+        #     '//div[@class="imagebox"]/img[@itemprop="image"]/@src'
+        # ).get()
+        #
+        # if item["image_link"]:
+        #     item["image_urls"] = [response.urljoin(item["image_link"])]
+        # else:
+        #     item["image_urls"] = []
+        #
+        # item["image_name"] = item["image_link"].split("/")[-1] if item["image_link"] else None
+        # image_relative = response.xpath('//div[@class="imagebox"]/img[@itemprop="image"]/@src').get()
+        # item["image_link"] = urljoin(response.url, image_relative) if image_relative else None
+        item["image_link"] = response.xpath(
+            '//div[@class="imagebox"]/img[@itemprop="image"]/@src'
+        ).get()
+        item["image_urls"] = [item["image_link"]] if item["image_link"] else []
         item["image_name"] = item["image_link"].split("/")[-1]
         item["condition"] = response.xpath(
             '//span[@class="product-fields-title" and contains(text(), "Condition")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
@@ -76,10 +92,10 @@ class BooksSpider(CrawlSpider):
         ).re_first(r'[^\d.,\s]+')
         item["price"] = response.xpath(
             '//div[@class="PricesalesPrice vm-display vm-price-value"]/span[@class="PricesalesPrice"]/text()'
-        ).get()
-        item["discount_price"] = response.xpath(
+        ).re_first(r'[\d,.]+')
+        item["initial_price"] = response.xpath(
             '//div[@class="PricebasePrice vm-display vm-price-value"]/span[@class="PricebasePrice"]/text()'
-        ).get()
+        ).re_first(r'[\d,.]+')
         item["delivery_time"] = response.xpath(
             '//span[@class="product-fields-title" and contains(text(), "Shipping Time")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
         ).get()

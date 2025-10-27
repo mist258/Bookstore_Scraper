@@ -7,8 +7,8 @@ from pathlib import Path
 from alembic import context
 from sqlalchemy import engine_from_config, pool
 
-from .models import Base
-from src.utils.funcs.database import mysql_connection_string
+from database.models import Base
+from utils import mysql_connection_string
 
 sys.path.append(str(Path(__file__).absolute().parent.parent))
 
