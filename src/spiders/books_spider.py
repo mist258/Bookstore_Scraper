@@ -64,18 +64,6 @@ class BooksSpider(CrawlSpider):
         item["number_of_pages"] =  response.xpath(
             '//span[@class="product-fields-title" and contains(text(), "Number of Pages")]/ancestor::div[@class="span6"]/following-sibling::div/span[@class="product-field-display"]/text()'
         ).get()
-        # item["image_link"] = response.xpath(
-        #     '//div[@class="imagebox"]/img[@itemprop="image"]/@src'
-        # ).get()
-        #
-        # if item["image_link"]:
-        #     item["image_urls"] = [response.urljoin(item["image_link"])]
-        # else:
-        #     item["image_urls"] = []
-        #
-        # item["image_name"] = item["image_link"].split("/")[-1] if item["image_link"] else None
-        # image_relative = response.xpath('//div[@class="imagebox"]/img[@itemprop="image"]/@src').get()
-        # item["image_link"] = urljoin(response.url, image_relative) if image_relative else None
         item["image_link"] = response.xpath(
             '//div[@class="imagebox"]/img[@itemprop="image"]/@src'
         ).get()
